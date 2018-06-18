@@ -104,7 +104,8 @@ script:
     if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
       sed -i.bak '/bears = GitCommitBear/d' .coafile
     fi
-  - coala --non-interactive
+  - find . -type f -name '*.bak'
+  - coala --non-interactive -V
   - python setup.py docs
   - .ci/check_man.sh
 
